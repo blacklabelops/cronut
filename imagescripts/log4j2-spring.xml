@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="60">
+  <Appenders>
+    <Console name="Console-Appender" target="SYSTEM_OUT">
+      <PatternLayout>
+        <Pattern>${LOG4J_LOG_PATTERN}</Pattern>
+      </PatternLayout>
+    </Console>
+  </Appenders>
+
+  <Loggers>
+    <Logger name="com.blacklabelops.crow" level="${LOG4J_LOG_LEVEL}" additivity="false">
+      <AppenderRef ref="Console-Appender"/>
+    </Logger>
+    <Logger name="org.springframework" level="error" additivity="false">
+      <AppenderRef ref="Console-Appender"/>
+    </Logger>
+    <Logger name="org.hibernate" level="error" additivity="false">
+      <AppenderRef ref="Console-Appender"/>
+    </Logger>
+    <Root level="info">
+      <AppenderRef ref="Console-Appender"/>
+    </Root>
+  </Loggers>
+</Configuration>
