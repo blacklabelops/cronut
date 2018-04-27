@@ -29,7 +29,7 @@ if [ "${DEBUG}" = 'true' ]; then
 fi
 
 if [ -n "${CRONUT_BASE_URL}" ]; then
-  export CRONUT_BASE_URL=${CRONUT_BASE_URL}
+  export CROW_BASE_URL=${CRONUT_BASE_URL}
 fi
 
 if [ "$1" = 'cronut-demon' ] || [ "${1:0:1}" = '-' ]; then

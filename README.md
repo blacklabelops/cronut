@@ -101,3 +101,7 @@ $ docker exec your_cronut_container cronut list
 ~~~~
 
 > Lists all jobs in cronium container with name `your_cronut_container`.
+
+# References
+
+* [Crow Cron Web Scheduler](https://github.com/blacklabelops/crow)
