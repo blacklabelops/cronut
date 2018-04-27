@@ -38,12 +38,12 @@ Job settings are defined by configuration fields and the jobs can be defined usi
 
 * `NAME`: (Required) A unique job name, must be unique among all container's jobs.
 * `CRON`: (Required) The cron schedule. Specifics and syntax can be found here [Wikipedia - Cron](https://en.wikipedia.org/wiki/Cron)
-* `COMMAND`: (Required) Then command to be executed.
+* `COMMAND`: (Required) The command to be executed.
 * `PRE_COMMAND`: (Optional) This command to be executed before the actual command.
 * `POST_COMMAND`: (Optional) This command to be executed after the actual command.
-* `SHELL_COMMAND`: (Optional) The shell command. Default: Set by global configuration.
-* `EXECUTION`: (Optional) The execution mode for this job. Default: Set by global configuration.
-* `ON_ERROR`: (Optional) The error mode for this job. Default: Set by global configuration.
+* `SHELL_COMMAND`: Optional) The shell command. Example: `/bin/sh -c` or `/bin/bash -c`.
+* `EXECUTION`: (Optional) The execution mode. Possible values `parallel` or `sequential`. A single job will be either executes strictly sequential or multiple instances of the same job can run in parallel. Default is: `sequential`.
+* `ON_ERROR`: (Optional) The error mode. Possible values `stop` or `continue`. A single job will be either executed continuesly despite of errors or will not be scheduled anymore after an error occured. Default is: `continue`.
 
 Setting a job configuration field:
 
@@ -101,38 +101,3 @@ $ docker exec your_cronut_container cronut list
 ~~~~
 
 > Lists all jobs in cronium container with name `your_cronut_container`.
-
-Remote Usage:
-
-~~~~
-$ docker run --rm -e "CRONUT_BASE_URL=http://your_cronut_container:8080" blacklabelops/cronut cronut list
-~~~~
-
-> Runs command against remote container with host name `your_cronut_container`.
-
-Full Example:
-
-1. Create Docker Network
-
-~~~~
-$ docker create network cronut
-~~~~
-
-2. Start Cronut
-
-~~~~
-$ docker run -d --name cronut \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    --network cronut \
-    blacklabelops/cronut
-~~~~
-
-3. Remote List Cronut Jobs
-
-~~~~
-$ docker run --rm \
-    --network cronut \
-    -e "CRONUT_BASE_URL=http://cronut:8080" \
-    blacklabelops/cronut \
-    cronut list
-~~~~
