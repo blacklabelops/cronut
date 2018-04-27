@@ -52,7 +52,7 @@ $ docker run -d \
     -e "CRONUT_ON_ERROR=continue" \
     -e "CRONJOB1NAME=Job1" \
     -e "CRONJOB1CRON=* * * * *" \
-    -e "CRONJOB1COMMAND=echo 'Hello World'" \
+    -e 'CRONJOB1COMMAND=echo "Hello World"' \
     your-image
 ~~~~
 
@@ -83,7 +83,7 @@ Example minimal job configuration:
 $ docker run -d \
     -e "CRONJOB1NAME=Job1" \
     -e "CRONJOB1CRON=* * * * *" \
-    -e "CRONJOB1COMMAND=echo 'Hello World'" \
+    -e 'CRONJOB1COMMAND=echo "Hello World"' \
     your-image
 ~~~~
 
@@ -95,9 +95,9 @@ Example full job configuration:
 $ docker run -d --name cronium \
     -e "CRONJOB1NAME=Job1" \
     -e "CRONJOB1CRON=* * * * *" \
-    -e "CRONJOB1PRE_COMMAND=echo 'Hello World - Pre'" \
-    -e "CRONJOB1COMMAND=echo 'Hello World'" \
-    -e "CRONJOB1POST_COMMAND=echo 'Hello World - Post'" \
+    -e 'CRONJOB1PRE_COMMAND=echo "Hello World - Pre"' \
+    -e 'CRONJOB1COMMAND=echo "Hello World"' \
+    -e 'CRONJOB1POST_COMMAND=echo "Hello World - Post"' \
     -e "CRONJOB1SHELL_COMMAND=/bin/bash -c" \
     -e "CRONJOB1EXECUTION=sequential" \
     -e "CRONJOB1ON_ERROR=continue" \
