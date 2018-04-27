@@ -102,6 +102,37 @@ $ docker exec your_cronut_container cronut list
 
 > Lists all jobs in cronium container with name `your_cronut_container`.
 
+## Changing The User
+
+You can specify linux group id and user id for the scheduler.
+
+Example:
+
+~~~~
+$ docker run -d --name cronut \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -e "CRONUT_GID=1000" \
+    -e "CRONUT_UID=1000" \
+    blacklabelops/cronut
+~~~~
+
+> Note: User with group id 1000 and user id 1000 must have permission to access docker socket. Otherwise, setup remote docker access.
+
+## Debug Mode
+
+Set environment variable `DEBUG` to value `true` to activate Cronut in debug mode.
+
+Example:
+
+~~~~
+$ docker run -d --name cronut \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -e "DEBUG=true" \
+    blacklabelops/cronut
+~~~~
+
+> Note: Prints debug information to logs.
+
 # References
 
 * [Crow Cron Web Scheduler](https://github.com/blacklabelops/crow)
