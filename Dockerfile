@@ -4,8 +4,10 @@ FROM blacklabelops/java:openjre.8
 ARG BUILD_DATE=undefined
 
 ENV CRONUT_HOME=/opt/cronut/ \
-    CROW_GLOBAL_PROPERTY_PREFIX=CRONUT_ \
-    CROW_JOB_PROPERTY_PREFIX=CRONJOB \
+    CROW_GLOBAL_ENVIRONMENT_PREFIX=CRONUT_ \
+    crow.global.property.prefix=com.blacklabelops.cronut. \
+    CROW_JOB_ENVIRONMENT_PREFIX=CRONJOB \
+    crow.job.property.prefix=com.blacklabelops.cronjob. \
     CROW_DOCKER_CRAWLER_ENABLED=true \
     CRONUT_HOME=/opt/cronut \
     JAVA_OPTS=-Xmx64m \
@@ -14,7 +16,7 @@ ENV CRONUT_HOME=/opt/cronut/ \
 RUN apk add --update --no-cache --virtual .build-deps \
       curl && \
     mkdir -p ${CRONUT_HOME} && \
-    curl -fsSL https://68-112953069-gh.circle-artifacts.com/0/root/crow/application/target/artifacts/crow-application-0.5-SNAPSHOT.jar -o ${CRONUT_HOME}/crow-application.jar && \
+    curl -fsSL https://71-112953069-gh.circle-artifacts.com/0/root/crow/application/target/artifacts/crow-application-0.5-SNAPSHOT.jar -o ${CRONUT_HOME}/crow-application.jar && \
     # Cleanup
     apk del .build-deps && \
     rm -rf /var/cache/apk/* && rm -rf /tmp/* && rm -rf /var/log/*

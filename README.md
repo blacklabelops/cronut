@@ -23,40 +23,12 @@ Secondly, start any container with cron jobs and keep it running:
 ~~~~
 $ docker run -d \
     -e "CRONJOB1NAME=Job1" \
-    -e "CRONJOB1CONTAINER_NAME=TestContainer" \
     -e "CRONJOB1CRON=* * * * *" \
     -e 'CRONJOB1COMMAND=echo "Hello World!"' \
     busybox sh -c "while sleep 600; do :; done"
 ~~~~
 
 > Note: Just a random container containing your application, scripts and binaries.
-
-## Global Configuration
-
-The global configuration consists of the following fields. The field's environment variables are all preceeded by `CRONUT_`:
-
-* `SHELL_COMMAND`: (Optional) The shell command for all cron jobs. Example: `/bin/sh -c` or `/bin/bash -c`, all jobs are executed inside shell by default.
-* `EXECUTION`: (Optional) The execution mode for all cron jobs. Possible values `parallel` or `sequential`. A single job will be either executes strictly sequential or multiple instances of the same job can run in parallel. Default is: `sequential`.
-* `ON_ERROR`: (Optional) The error mode for all cron jobs. Possible values `stop` or `continue`. A single job will be either executed continuesly despite of errors or will not be scheduled anymore after an error occured. Default is: `continue`.
-
-Setting a global configuration field:
-
-All fields are configured as environment variables. The environment variable are preceeded by `CRONUT_`:
-
-Example:
-
-~~~~
-$ docker run -d \
-    -e "CRONUT_SHELL_COMMAND=/bin/bash -c" \
-    -e "CRONUT_EXECUTION=sequential" \
-    -e "CRONUT_ON_ERROR=continue" \
-    -e "CRONJOB1NAME=Job1" \
-    -e "CRONJOB1CRON=* * * * *" \
-    -e 'CRONJOB1COMMAND=echo "Hello World"' \
-    your-image
-~~~~
-
-> Jobs will be executed inside container inside bash shell.
 
 ## Job Configuration
 
