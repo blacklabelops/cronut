@@ -2,7 +2,7 @@
 
 The delicious cron software solution for your Docker environment.
 
-Cronut is a cron demon for Docker environments. Finally, dynamically executing cron on containers.
+Cronut is a cron daemon for Docker environments. Finally, dynamically executing cron on containers.
 
 ## Why Cronut?
 
