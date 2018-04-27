@@ -64,7 +64,7 @@ $ docker run -d \
 Example full job configuration:
 
 ~~~~
-$ docker run -d --name cronium \
+$ docker run -d --name cronut \
     -e "CRONJOB1NAME=Job1" \
     -e "CRONJOB1CRON=* * * * *" \
     -e 'CRONJOB1PRE_COMMAND=echo "Hello World - Pre"' \
@@ -100,7 +100,7 @@ Usage:
 $ docker exec your_cronut_container cronut list
 ~~~~
 
-> Lists all jobs in cronium container with name `your_cronut_container`.
+> Lists all jobs in cronut container with name `your_cronut_container`.
 
 ## Changing The User
 
