@@ -16,7 +16,7 @@ ENV CRONUT_HOME=/opt/cronut/ \
 RUN apk add --update --no-cache --virtual .build-deps \
       curl && \
     mkdir -p ${CRONUT_HOME} && \
-    curl -fsSL https://71-112953069-gh.circle-artifacts.com/0/root/crow/application/target/artifacts/crow-application-0.5-SNAPSHOT.jar -o ${CRONUT_HOME}/crow-application.jar && \
+    curl -fsSL https://76-112953069-gh.circle-artifacts.com/0/root/crow/application/target/artifacts/crow-application-0.5-SNAPSHOT.jar -o ${CRONUT_HOME}/crow-application.jar && \
     # Cleanup
     apk del .build-deps && \
     rm -rf /var/cache/apk/* && rm -rf /tmp/* && rm -rf /var/log/*
@@ -32,4 +32,4 @@ LABEL com.blacklabelops.image.builddate.cronut=${BUILD_DATE}
 EXPOSE 8080
 WORKDIR ${CRONUT_HOME}
 ENTRYPOINT ["/sbin/tini","--","/opt/cronut/docker-entrypoint.sh"]
-CMD ["cronut-demon"]
+CMD ["cronut-daemon"]

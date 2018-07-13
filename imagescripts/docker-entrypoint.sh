@@ -32,7 +32,7 @@ if [ -n "${CRONUT_BASE_URL}" ]; then
   export CROW_BASE_URL=${CRONUT_BASE_URL}
 fi
 
-if [ "$1" = 'cronut-demon' ] || [ "${1:0:1}" = '-' ]; then
+if [ "$1" = 'cronut-daemon' ] || [ "${1:0:1}" = '-' ]; then
   migrateJobberEnvs
   if [ -n "${CRONUT_UID}" ]; then
       printUserInfo
