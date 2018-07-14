@@ -16,7 +16,7 @@ ENV CRONUT_HOME=/opt/cronut/ \
 RUN apk add --update --no-cache --virtual .build-deps \
       curl && \
     mkdir -p ${CRONUT_HOME} && \
-    curl -fsSL https://77-112953069-gh.circle-artifacts.com/0/root/crow/application/target/artifacts/crow-application-0.5-SNAPSHOT.jar -o ${CRONUT_HOME}/crow-application.jar && \
+    curl -fsSL https://79-112953069-gh.circle-artifacts.com/0/root/crow/application/target/artifacts/crow-application-0.5-SNAPSHOT.jar -o ${CRONUT_HOME}/crow-application.jar && \
     # Cleanup
     apk del .build-deps && \
     rm -rf /var/cache/apk/* && rm -rf /tmp/* && rm -rf /var/log/*
